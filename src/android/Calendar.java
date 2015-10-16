@@ -11,6 +11,8 @@ import org.json.JSONException;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.widget.Toast;
+import android.util.Log
 
 public class Calendar extends CordovaPlugin {
     public static final String ACTION_ADD_CALENDAR_ENTRY = "addCalendarEntry"; 
@@ -18,7 +20,12 @@ public class Calendar extends CordovaPlugin {
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		try {
-			if (ACTION_ADD_CALENDAR_ENTRY.equals(action)) { 
+			Log.i("execute", "I'm in!");
+			Toast toast = Toast.makeText(this.cordova.getActivity(), "I'm In", Toast.LENGTH_SHORT);
+			toast.show();
+			callbackContext.success();
+			return true;
+/*			if (ACTION_ADD_CALENDAR_ENTRY.equals(action)) { 
 					 JSONObject arg_object = args.getJSONObject(0);
 					 Intent calIntent = new Intent(Intent.ACTION_EDIT)
 				.setType("vnd.android.cursor.item/event")
@@ -33,7 +40,8 @@ public class Calendar extends CordovaPlugin {
 			   return true;
 			}
 			callbackContext.error("Invalid action");
-			return false;
+			return false;*/
+			
 		} catch(Exception e) {
 			System.err.println("Exception: " + e.getMessage());
 			callbackContext.error(e.getMessage());
