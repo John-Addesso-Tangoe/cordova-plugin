@@ -1,4 +1,4 @@
-package org.devgirl.calendar;
+package com.addesso.calendar;
  
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -9,12 +9,15 @@ import org.json.JSONException;
 import android.app.Activity;
 import android.content.Intent;
 
+import android.util.Log;
+
 public class Calendar extends CordovaPlugin {
     public static final String ACTION_ADD_CALENDAR_ENTRY = "addCalendarEntry";
     
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         try {
+			Log.i("execute", "I'm in!");
             if (ACTION_ADD_CALENDAR_ENTRY.equals(action)) { 
                 JSONObject arg_object = args.getJSONObject(0);
                 Intent calIntent = new Intent(Intent.ACTION_EDIT)
